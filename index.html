@@ -15,16 +15,16 @@
         <header class="jumbotron m-2">
             <h2 class="display-6 text-center font-weight-bold">Weather Dashboard</h2>
         </header>
-        <div class="row">
+        <div class="row d-flex justify-content-between m-2">
         <!-- Search for a City -->
-            <div class="col-2 container">
+            <div class="col-3">
                 <!-- Search box -->
                 <form class="row pb-3 mb-3">
                     <h4 class="font-weight-bold">Search for a City: </h4>
-                    <div class="form-group">
-                        <input type="text" class="form-control text-align" id="cityInput" placeholder="Enter city name">
+                    <!-- <div class="form-group"> -->
+                        <input type="text" class="form-control text-align mb-3" id="cityInput" placeholder="Enter city name">
                         
-                    </div>
+                    <!-- </div> -->
                     <button type="submit" class="btn-search btn-block" id="btn-search">Search</button>
                 
                 </form>
@@ -34,13 +34,13 @@
                 </div>
             </div>
         <!-- Weather Dashboard -->
-            <div class="col-6 container">
+            <div class="col-6">
                 <!-- Weather on current date -->
-                <div class="row container">
+                <div class="row">
                     <h4 class="text-center font-weight-bold">Weather on current date </h4>
                 </div>
                 <!-- Weather in future -->
-                <div class="row container">
+                <div class="row">
                     <h4 class="text-center font-weight-bold">5-Day Forecast</h4>
                 </div>
             </div>

@@ -15,9 +15,17 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1;
+    font-family: Arial, Helvetica, 'Open Sans', sans-serif;
+    border-radius: 10px; 
+    border: 2px solid var(--sixth-color);
+    padding: 1%;
+}
+
+body, html { 
+    height: 100%;
+    margin: 1%;
 }
   
 .jumbotron {
