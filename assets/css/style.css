@@ -1,0 +1,23 @@
+:root {
+    --primary-color: rgb(70, 90, 184);
+    --secondary-color: rgb(38, 19, 96);
+    --tertiary-color: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+  
+.jumbotron {
+    text-align: center;
+    color: var(--tertiary-color);
+    background-image: linear-gradient(to right, var(--primary-color) , var(--secondary-color));
+  }
