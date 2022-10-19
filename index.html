@@ -18,17 +18,30 @@
         <div class="row">
         <!-- Search for a City -->
             <div class="col-2 container">
-                <h4 class="display-6 text-center font-weight-bold">Search for a City: </h4>
+                <!-- Search box -->
+                <form class="row pb-3 mb-3">
+                    <h4 class="font-weight-bold">Search for a City: </h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control text-align" id="cityInput" placeholder="Enter city name">
+                        
+                    </div>
+                    <button type="submit" class="btn-search btn-block" id="btn-search">Search</button>
+                
+                </form>
+                <!-- Search history -->
+                <div class="row">
+                    <h4 class="font-weight-bold">Placeholder - CityName</h4>
+                </div>
             </div>
         <!-- Weather Dashboard -->
             <div class="col-6 container">
                 <!-- Weather on current date -->
                 <div class="row container">
-                    <h4 class="display-6 text-center font-weight-bold">Weather on current date </h4>
+                    <h4 class="text-center font-weight-bold">Weather on current date </h4>
                 </div>
                 <!-- Weather in future -->
                 <div class="row container">
-                    <h4 class="display-6 text-center font-weight-bold">5-Day Forecast</h4>
+                    <h4 class="text-center font-weight-bold">5-Day Forecast</h4>
                 </div>
             </div>
         </div>

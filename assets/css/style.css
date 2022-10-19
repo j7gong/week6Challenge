@@ -2,6 +2,10 @@
     --primary-color: rgb(70, 90, 184);
     --secondary-color: rgb(38, 19, 96);
     --tertiary-color: white;
+    --fourth-color: rgb(105, 145, 227);
+    --fifth-color: rgb(174, 174, 174);
+    --sixth-color: rgb(50, 61, 79);
+    --seventh-color: black;
 }
 
 * {
@@ -14,10 +18,27 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1;
-  }
+}
   
 .jumbotron {
     text-align: center;
     color: var(--tertiary-color);
     background-image: linear-gradient(to right, var(--primary-color) , var(--secondary-color));
-  }
+}
+
+.btn-search {
+    background-color: var(--fourth-color);
+    border: 0;
+    padding: 5%;
+    color: var(--tertiary-color);
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: content-box;
+}
+
+form {
+    border-bottom: 2px solid var(--fifth-color); 
+}
