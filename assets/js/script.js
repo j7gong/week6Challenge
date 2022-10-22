@@ -1,3 +1,4 @@
+// Autocomplete with cities when user searching by typing city name
 var split = function (val) {
   return val.split(/,\s*/);
 }
@@ -16,7 +17,7 @@ jQuery(function () {
   $citiesField.autocomplete({
       source: function (request, response) {
           jQuery.getJSON(
-              "http://gd.geobytes.com/AutoCompleteCity?callback=?&q=" + extractLast(request.term),
+              "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
               function (data) {
                   response(data);
               }

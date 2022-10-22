@@ -40,7 +40,7 @@ body, html {
     padding: 5%;
     color: var(--tertiary-color);
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     transition: background-color .1s;
     cursor: pointer;
     border-radius: 5px;
