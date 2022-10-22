@@ -87,6 +87,7 @@ var showHistory = function (cityName) {
   var btnCity = document.createElement("button");
   btnCity.classList = "btn-search color-gray btn-block";
   btnCity.setAttribute("id", "btn-city");
+  btnCity.setAttribute("type", "submit");
   btnCity.textContent = cityName;
   
   histContainer.appendChild(btnCity);

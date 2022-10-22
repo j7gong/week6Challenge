@@ -21,13 +21,14 @@ body {
     border-radius: 10px; 
     border: 2px solid var(--sixth-color);
     padding: 1%;
+    position: relative;
 }
 
 body, html { 
-    height: 100%;
+    min-height: 100vh;
     margin: 1%;
 }
-  
+
 .jumbotron {
     text-align: center;
     color: var(--tertiary-color);
