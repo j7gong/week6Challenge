@@ -11,8 +11,8 @@ var extractFirst = function (term) {
   return split(term)[0];
 }
 
-jQuery(function () {
-  var $citiesField = jQuery("#cityInput");
+$(function () {
+  var $citiesField = $("#cityInput");
 
   $citiesField.autocomplete({
       source: function (request, response) {
@@ -48,4 +48,29 @@ jQuery(function () {
   });
 
   $citiesField.autocomplete("option", "delay", 100);
+});
+
+// Save search history
+var saveSearch = function (cityName) {
+  // Store searched cities in localStorage
+  cities = JSON.parse(localStorage.getItem("cities"));
+  // if nothing in localStorage, create a new object to track all cities searched
+  if (!cities) {
+    cities = [];
+  };
+
+  cities.push(cityName);
+  localStorage.setItem("cities", JSON.stringify(cities));
+
+};
+
+// Add save ability when click search
+$("#btn-search").on("click", function () {
+  // event.preventDefault();
+  console.log("clicked!");
+  // get the current search value
+  var citySearch = $(this).closest(".row").find("span").text().trim();
+      cityName = citySearch.split(",")[0]
+     
+  saveSearch(cityName);
 });
