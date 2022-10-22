@@ -85,7 +85,7 @@ searchedCityName = JSON.parse(localStorage.getItem("cities"));
 var showHistory = function (cityName) {
   // create city button
   var btnCity = document.createElement("button");
-  btnCity.classList = "btn-search color-gray btn-block";
+  btnCity.classList = "btn-search color-gray btn-block mb-2";
   btnCity.setAttribute("id", "btn-city");
   btnCity.setAttribute("type", "submit");
   btnCity.textContent = cityName;
