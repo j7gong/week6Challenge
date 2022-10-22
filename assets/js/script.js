@@ -1,3 +1,5 @@
+var histContainer = document.querySelector("#hist");
+
 // Autocomplete with cities when user searching by typing city name
 var split = function (val) {
   return val.split(/,\s*/);
@@ -58,19 +60,40 @@ var saveSearch = function (cityName) {
   if (!cities) {
     cities = [];
   };
-
-  cities.push(cityName);
-  localStorage.setItem("cities", JSON.stringify(cities));
-
+  
+  if (cityName) {
+    cities.push(cityName);
+    localStorage.setItem("cities", JSON.stringify(cities));
+  };
+  
 };
 
 // Add save ability when click search
 $("#btn-search").on("click", function () {
-  // event.preventDefault();
   console.log("clicked!");
   // get the current search value
   var citySearch = $(this).closest(".row").find("span").text().trim();
+  console.log(citySearch);
       cityName = citySearch.split(",")[0]
-     
+    
   saveSearch(cityName);
 });
+
+// Add searched city to history section
+searchedCityName = JSON.parse(localStorage.getItem("cities"));
+
+var showHistory = function (cityName) {
+  // create city button
+  var btnCity = document.createElement("button");
+  btnCity.classList = "btn-search color-gray btn-block";
+  btnCity.setAttribute("id", "btn-city");
+  btnCity.textContent = cityName;
+  
+  histContainer.appendChild(btnCity);
+};
+
+if (searchedCityName) {
+  for(i=0; i<searchedCityName.length; i++) {
+  console.log(searchedCityName[i]);
+  showHistory(searchedCityName[i]);
+};};

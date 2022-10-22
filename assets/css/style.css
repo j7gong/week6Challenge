@@ -35,7 +35,6 @@ body, html {
 }
 
 .btn-search {
-    background-color: var(--fourth-color);
     border: 0;
     padding: 5%;
     color: var(--tertiary-color);
@@ -45,6 +44,14 @@ body, html {
     cursor: pointer;
     border-radius: 5px;
     box-sizing: content-box;
+}
+
+.color-blue {
+    background-color: var(--fourth-color);
+}
+
+.color-gray {
+    background-color: var(--fifth-color);
 }
 
 form {
