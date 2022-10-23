@@ -33,13 +33,13 @@ body, html {
     text-align: center;
     color: var(--tertiary-color);
     background-image: linear-gradient(to right, var(--primary-color) , var(--secondary-color));
+    padding: 1%;
 }
 
 .btn-search {
     border: 0;
-    padding: 5%;
+    padding: 3% 4%;
     color: var(--tertiary-color);
-    font-weight: bold;
     font-size: 16px;
     transition: background-color .1s;
     cursor: pointer;
@@ -53,6 +53,11 @@ body, html {
 
 .color-gray {
     background-color: var(--fifth-color);
+}
+
+.color-darkBlue {
+    background-color: var(--sixth-color);
+    color: var(--tertiary-color);
 }
 
 form {
