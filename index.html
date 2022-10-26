@@ -36,11 +36,11 @@
         <!-- Weather Dashboard -->
             <div class="col m-2 d-flex flex-column">
                 <!-- Weather on current date -->
-                <div class="row border border-secondary d-flex flex-column">
-                    <h4 class="p-2 font-weight-bold">Los Angelas (10/22/2022)</h4>
-                    <p class="px-2">Temp: 76.62 °F</p>
-                    <p class="px-2">Wind: 8.43 MPH</p>
-                    <p class="px-2">Humidity: 44 %</p>
+                <div id="current" class="row border border-secondary d-flex flex-column">
+                    <h4 id="currentCityName" class="p-2 font-weight-bold"></h4>
+                    <p id="currentTemp" class="px-2"></p>
+                    <p id="currentWind" class="px-2"></p>
+                    <p id="currentHumidity" class="px-2"></p>
                 </div>
                 <!-- Weather in future -->
                 <div class="row mt-3 mb-2 d-flex flex-column">
@@ -84,5 +84,6 @@
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </html>

@@ -93,21 +93,24 @@ var showHistory = function (cityName) {
   histContainer.appendChild(btnCity);
 };
 
-// Get current weahter
+//Display current weather
+var displaycurrent = function (cityName, temp, wind, humidity) {
+  $("#current").find("#currentCityName").text(cityName+" "+moment().format('MM/DD/YYYY'));
+  $("#current").find("#currentTemp").text("Temp: "+temp+" °F");
+  $("#current").find("#currentWind").text("Wind: "+wind+" MPH");
+  $("#current").find("#currentHumidity").text("Humidity: "+humidity+" %");
+};
+
+//Get current weahter
 var getCurrentWeather = function(cityName){
   var city = cityName.replace(/ /g,"\%20");
-  // console.log("City: "+city);
   var apiKey = "380a621c3ce6ec20318abf9243287d4c";
   var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+",US&lang=en&units=imperial&appid="+apiKey;
-  // console.log("apiUrl: "+apiUrl);
 
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
       response.json().then(function(data) {
-        console.log(data);
-        console.log("temp: "+data.main.temp);
-        console.log("wind: "+data.wind.speed);
-        console.log("humidity: "+data.main.humidity);
+        displaycurrent(cityName, data.main.temp, data.wind.speed, data.main.humidity);
       });
     } else {
       alert('Error: GitHub User Not Found');
