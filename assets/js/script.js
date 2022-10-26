@@ -93,8 +93,36 @@ var showHistory = function (cityName) {
   histContainer.appendChild(btnCity);
 };
 
+// Get current weahter
+var getCurrentWeather = function(cityName){
+  var city = cityName.replace(/ /g,"\%20");
+  // console.log("City: "+city);
+  var apiKey = "380a621c3ce6ec20318abf9243287d4c";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+",US&lang=en&units=imperial&appid="+apiKey;
+  // console.log("apiUrl: "+apiUrl);
+
+  fetch(apiUrl).then(function(response) {
+    if (response.ok) {
+      response.json().then(function(data) {
+        console.log(data);
+        console.log("temp: "+data.main.temp);
+        console.log("wind: "+data.wind.speed);
+        console.log("humidity: "+data.main.humidity);
+      });
+    } else {
+      alert('Error: GitHub User Not Found');
+    }
+  });
+}
+
 if (searchedCityName) {
   for(i=0; i<searchedCityName.length; i++) {
   console.log(searchedCityName[i]);
   showHistory(searchedCityName[i]);
-};};
+  
+};
+  getCurrentWeather(searchedCityName[searchedCityName.length-1]);
+};
+
+
+
