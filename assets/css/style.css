@@ -63,3 +63,7 @@ body, html {
 form {
     border-bottom: 2px solid var(--fifth-color); 
 }
+
+#future-title {
+    visibility: hidden;
+}

@@ -96,6 +96,7 @@ var showHistory = function (cityName) {
 
 //Display current weather
 var displaycurrent = function (cityName, temp, wind, humidity) {
+  $("#current").addClass("border");
   $("#current").find("#currentCityName").text(cityName+" "+moment().format('MM/DD/YYYY'));
   $("#current").find("#currentTemp").text("Temp: "+temp+" °F");
   $("#current").find("#currentWind").text("Wind: "+wind+" MPH");
@@ -121,6 +122,8 @@ var getCurrentWeather = function(cityName){
 
 //Display future weather
 var displayfuture = function (date, temp, wind, humidity) {
+  var futureTitleEl = document.querySelector("#future-title");
+  futureTitleEl.style.visibility = "visible"
   var weatherContainer = document.createElement("div");
   weatherContainer.classList = "pr-2 color-darkBlue";
   futureContainer.appendChild(weatherContainer);
@@ -152,17 +155,13 @@ var getFutureWeather = function (cityName) {
 
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
-      response.json().then(function(data) {
-        console.log(data);
-        for(i=0;i<data.list.length;i=i+8){
-          console.log(i);
-          console.log(data.list[i]);
-          console.log(data.list[i].dt_txt.split(" ")[0]);
-          console.log(data.list[i].main.temp);
-          console.log(data.list[i].wind.speed);
-          console.log(data.list[i].main.humidity);
 
-          displayfuture(data.list[i].dt_txt.split(" ")[0], data.list[i].main.temp, data.list[i].wind.speed, data.list[i].main.humidity)
+      response.json().then(function(data) {
+
+        for(i=0;i<data.list.length;i=i+8){
+          displayfuture(data.list[i].dt_txt.split(" ")[0], 
+          data.list[i].main.temp, data.list[i].wind.speed, 
+          data.list[i].main.humidity);
         };
 
       });
