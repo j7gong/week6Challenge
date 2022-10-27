@@ -93,7 +93,10 @@ var showHistory = function (cityName) {
 };
 
 //Display current weather
-var displaycurrent = function (cityName, temp, wind, humidity) {
+var displaycurrent = function (cityName, icon, temp, wind, humidity) {
+  // Display icon
+  var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+  $('#wicon').attr('src', iconurl);
   $("#current").addClass("border");
   $("#current").find("#currentCityName").text(cityName+" "+moment().format('MM/DD/YYYY'));
   $("#current").find("#currentTemp").text("Temp: "+temp+" °F");
@@ -110,7 +113,7 @@ var getCurrentWeather = function(cityName){
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
       response.json().then(function(data) {
-        displaycurrent(cityName, data.main.temp, data.wind.speed, data.main.humidity);
+        displaycurrent(cityName, data.weather[0].icon, data.main.temp, data.wind.speed, data.main.humidity);
       });
     } else {
       alert('Error: GitHub User Not Found');
@@ -119,7 +122,7 @@ var getCurrentWeather = function(cityName){
 }
 
 //Display future weather
-var displayfuture = function (date, temp, wind, humidity) {
+var displayfuture = function (date, icon, temp, wind, humidity) {
   var futureTitleEl = document.querySelector("#future-title");
   futureTitleEl.style.visibility = "visible"
   var weatherContainer = document.createElement("div");
@@ -129,17 +132,28 @@ var displayfuture = function (date, temp, wind, humidity) {
   var dateEl = document.createElement("h5");
   dateEl.classList = "p-2 font-weight-bold";
   dateEl.innerText = date;
+  
   var tempEl = document.createElement("p");
   tempEl.className = "px-2";
   tempEl.innerText = "Temp: "+temp+" °F";
+  
+  var iconEl = document.createElement("img");
+  iconEl.className = "px-2";
+  iconEl.setAttribute("id", "wicon");
+  iconEl.setAttribute("alt", "Weather icon");
+  var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+  iconEl.setAttribute("src", iconurl);
+
   var windEl = document.createElement("p");
   windEl.className = "px-2";
   windEl.innerText = "Wind: "+wind+" MPH";
+  
   var humidityEl = document.createElement("p");
   humidityEl.className = "px-2";
   humidityEl.innerText = "Humidity: "+humidity+" %";
 
   weatherContainer.appendChild(dateEl);
+  weatherContainer.appendChild(iconEl);
   weatherContainer.appendChild(tempEl);
   weatherContainer.appendChild(windEl);
   weatherContainer.appendChild(humidityEl);
@@ -155,9 +169,10 @@ var getFutureWeather = function (cityName) {
     if (response.ok) {
 
       response.json().then(function(data) {
-
+        console.log(data);
         for(i=0;i<data.list.length;i=i+8){
           displayfuture(data.list[i].dt_txt.split(" ")[0], 
+          data.list[i].weather[0].icon,
           data.list[i].main.temp, data.list[i].wind.speed, 
           data.list[i].main.humidity);
         };
