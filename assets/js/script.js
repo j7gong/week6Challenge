@@ -14,12 +14,14 @@ var extractFirst = function (term) {
   return split(term)[0];
 }
 
-$(document).ready(function ($) {
+jQuery.noConflict();
+
+jQuery(document).ready(function ($) {
   var $citiesField = $("#cityInput");
 
   $citiesField.autocomplete({
       source: function (request, response) {
-          $.getJSON(
+          jQuery.getJSON(
               "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
               function (data) {
                   response(data);
