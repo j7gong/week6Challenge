@@ -1,58 +1,6 @@
 var histContainer = document.querySelector("#hist");
 var futureContainer = document.querySelector("#future");
 
-// Autocomplete with cities when user searching by typing city name
-var split = function (val) {
-  return val.split(/,\s*/);
-}
-
-var extractLast = function (term) {
-  return split(term).pop();
-}
-
-var extractFirst = function (term) {
-  return split(term)[0];
-}
-
-// $(function () {
-//   var $citiesField = $("#cityInput");
-
-//   $citiesField.autocomplete({
-//       source: function (request, response) {
-//           $.getJSON(
-//               "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
-//               function (data) {
-//                   response(data);
-//               }
-//           );
-//       },
-//       minLength: 3,
-//       select: function (event, ui) {
-//           var selectedObj = ui.item;
-//           placeName = selectedObj.value;
-//           if (typeof placeName == "undefined") placeName = $citiesField.val();
-
-//           if (placeName) {
-//               var terms = split($citiesField.val());
-//               // remove the current input
-//               terms.pop();
-//               // add the selected item (city only)
-//               terms.push(extractFirst(placeName));
-
-//               $citiesField.val(terms);
-//           }
-
-//           return false;
-//       },
-//       focus: function() {
-//           // prevent value inserted on focus
-//           return false;
-//       },
-//   });
-
-//   $citiesField.autocomplete("option", "delay", 100);
-// });
-
 // Save search history
 var saveSearch = function (cityName) {
   // Store searched cities in localStorage
@@ -71,13 +19,7 @@ var saveSearch = function (cityName) {
 
 // Add save ability when click search
 $("#btn-search").on("click", function () {
-  // get the current search value
-  // var citySearch = $(this).closest(".row").find("span").text().trim();
-  //     cityName = citySearch.split(",")[0]
-  
-  // console.log("Clicked!");
   var cityName = document.querySelector("input[name='cityInput']").value;
-  // console.log(cityInput);
   saveSearch(cityName);
 });
 
@@ -173,7 +115,6 @@ var getFutureWeather = function (cityName) {
     if (response.ok) {
 
       response.json().then(function(data) {
-        console.log(data);
         for(i=0;i<data.list.length;i=i+8){
           displayfuture(data.list[i].dt_txt.split(" ")[0], 
           data.list[i].weather[0].icon,
