@@ -96,7 +96,8 @@ var showHistory = function (cityName) {
 var displaycurrent = function (cityName, icon, temp, wind, humidity) {
   // Display icon
   var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
-  $('#wicon').attr('src', iconurl);
+  $("#wicon").attr("src", iconurl);
+  $("#icon-container").css("visibility", "visible");
   $("#current").addClass("border");
   $("#current").find("#currentCityName").text(cityName+" "+moment().format('MM/DD/YYYY'));
   $("#current").find("#currentTemp").text("Temp: "+temp+" °F");
@@ -124,7 +125,7 @@ var getCurrentWeather = function(cityName){
 //Display future weather
 var displayfuture = function (date, icon, temp, wind, humidity) {
   var futureTitleEl = document.querySelector("#future-title");
-  futureTitleEl.style.visibility = "visible"
+  futureTitleEl.style.visibility = "visible";
   var weatherContainer = document.createElement("div");
   weatherContainer.classList = "pr-2 color-darkBlue";
   futureContainer.appendChild(weatherContainer);
