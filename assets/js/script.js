@@ -71,10 +71,8 @@ var saveSearch = function (cityName) {
 
 // Add save ability when click search
 $("#btn-search").on("click", function () {
-  console.log("clicked!");
   // get the current search value
   var citySearch = $(this).closest(".row").find("span").text().trim();
-  console.log(citySearch);
       cityName = citySearch.split(",")[0]
     
   saveSearch(cityName);
@@ -88,7 +86,7 @@ var showHistory = function (cityName) {
   var btnCity = document.createElement("button");
   btnCity.classList = "btn-search color-gray btn-block mb-2";
   btnCity.setAttribute("id", "btn-city");
-  btnCity.setAttribute("type", "submit");
+  btnCity.setAttribute("type", "button");
   btnCity.textContent = cityName;
   
   histContainer.appendChild(btnCity);
@@ -174,10 +172,19 @@ var getFutureWeather = function (cityName) {
 
 if (searchedCityName) {
   for(i=0; i<searchedCityName.length; i++) {
-  console.log(searchedCityName[i]);
-  showHistory(searchedCityName[i]);
-  
+    showHistory(searchedCityName[i]);
 };
   getCurrentWeather(searchedCityName[searchedCityName.length-1]);
   getFutureWeather(searchedCityName[searchedCityName.length-1]);
 };
+
+// Display weather info when clicking city from search history
+var btnCityEl = document.querySelectorAll("#btn-city");
+for(i=0;i<btnCityEl.length;i++){
+  btnCityEl[i].addEventListener("click", function(){
+    var cityName=$(this).text();
+    futureContainer.innerHTML = "";
+    getCurrentWeather(cityName);
+    getFutureWeather(cityName);
+  });
+}
