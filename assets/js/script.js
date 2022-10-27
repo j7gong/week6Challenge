@@ -14,7 +14,7 @@ var extractFirst = function (term) {
   return split(term)[0];
 }
 
-$(function () {
+$(document).ready(function () {
   var $citiesField = $("#cityInput");
 
   $citiesField.autocomplete({
