@@ -14,7 +14,7 @@ var extractFirst = function (term) {
   return split(term)[0];
 }
 
-$(document).ready(function () {
+(function () {
   var $citiesField = $("#cityInput");
 
   $citiesField.autocomplete({
@@ -48,7 +48,7 @@ $(document).ready(function () {
           // prevent value inserted on focus
           return false;
       },
-  });
+  })(jQuery);
 
   $citiesField.autocomplete("option", "delay", 100);
 });
