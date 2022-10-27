@@ -14,46 +14,44 @@ var extractFirst = function (term) {
   return split(term)[0];
 }
 
-jQuery.noConflict();
+// $(function () {
+//   var $citiesField = $("#cityInput");
 
-jQuery(document).ready(function ($) {
-  var $citiesField = $("#cityInput");
+//   $citiesField.autocomplete({
+//       source: function (request, response) {
+//           $.getJSON(
+//               "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
+//               function (data) {
+//                   response(data);
+//               }
+//           );
+//       },
+//       minLength: 3,
+//       select: function (event, ui) {
+//           var selectedObj = ui.item;
+//           placeName = selectedObj.value;
+//           if (typeof placeName == "undefined") placeName = $citiesField.val();
 
-  $citiesField.autocomplete({
-      source: function (request, response) {
-          jQuery.getJSON(
-              "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
-              function (data) {
-                  response(data);
-              }
-          );
-      },
-      minLength: 3,
-      select: function (event, ui) {
-          var selectedObj = ui.item;
-          placeName = selectedObj.value;
-          if (typeof placeName == "undefined") placeName = $citiesField.val();
+//           if (placeName) {
+//               var terms = split($citiesField.val());
+//               // remove the current input
+//               terms.pop();
+//               // add the selected item (city only)
+//               terms.push(extractFirst(placeName));
 
-          if (placeName) {
-              var terms = split($citiesField.val());
-              // remove the current input
-              terms.pop();
-              // add the selected item (city only)
-              terms.push(extractFirst(placeName));
+//               $citiesField.val(terms);
+//           }
 
-              $citiesField.val(terms);
-          }
+//           return false;
+//       },
+//       focus: function() {
+//           // prevent value inserted on focus
+//           return false;
+//       },
+//   });
 
-          return false;
-      },
-      focus: function() {
-          // prevent value inserted on focus
-          return false;
-      },
-  });
-
-  $citiesField.autocomplete("option", "delay", 100);
-});
+//   $citiesField.autocomplete("option", "delay", 100);
+// });
 
 // Save search history
 var saveSearch = function (cityName) {
@@ -74,9 +72,12 @@ var saveSearch = function (cityName) {
 // Add save ability when click search
 $("#btn-search").on("click", function () {
   // get the current search value
-  var citySearch = $(this).closest(".row").find("span").text().trim();
-      cityName = citySearch.split(",")[0]
-    
+  // var citySearch = $(this).closest(".row").find("span").text().trim();
+  //     cityName = citySearch.split(",")[0]
+  
+  // console.log("Clicked!");
+  var cityName = document.querySelector("input[name='cityInput']").value;
+  // console.log(cityInput);
   saveSearch(cityName);
 });
 
