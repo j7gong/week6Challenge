@@ -19,7 +19,7 @@ $(function () {
 
   $citiesField.autocomplete({
       source: function (request, response) {
-          jQuery.getJSON(
+          $.getJSON(
               "http://gd.geobytes.com/AutoCompleteCity?callback=?&filter=US&q=" + extractLast(request.term),
               function (data) {
                   response(data);
