@@ -25,7 +25,7 @@ body {
 }
 
 body, html { 
-    min-height: 100vh;
+    min-height: 90vh;
     margin: 1%;
 }
 
@@ -65,5 +65,9 @@ form {
 }
 
 #future-title {
+    visibility: hidden;
+}
+
+#icon-container {
     visibility: hidden;
 }
